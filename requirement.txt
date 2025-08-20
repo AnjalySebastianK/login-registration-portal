@@ -1,0 +1,5 @@
+Flask==2.3.2                 # Core web framework for building the app
+Werkzeug==2.3.6              # Provides secure password hashing and utilities
+Flask-Mail==0.9.1            # Enables sending OTP emails via SMTP
+python-dotenv==1.0.0         # Loads environment variables from a .env file
+requests==2.31.0             # Used to verify reCAPTCHA responses via HTTP
