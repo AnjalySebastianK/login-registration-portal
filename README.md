@@ -6,10 +6,10 @@ A beginner-friendly project built with Flask, HTML, CSS, and JavaScript that dem
 - **HTML5 & CSS3** – Structure and styling of the web pages  
 - **JavaScript** – Frontend interactivity and form validation  
 - **Flask-Mail** – Sending OTPs via email  
-- **Werkzeug Security** – Secure password hashing  
+- **SQLAlchemy** – ORM for database interactions
 - **Python Dotenv** – Managing environment variables securely  
 - **reCAPTCHA** – Bot protection using Google’s reCAPTCHA  
-- **JSON** – Lightweight format for storing user data  
+- **Flask-Bcrypt** - Password hashing
 
 ## Features
 - **User Registration with OTP Verification**  
@@ -36,8 +36,8 @@ A beginner-friendly project built with Flask, HTML, CSS, and JavaScript that dem
   - Prevents access to the dashboard after logout via the browser back button
 
 - **Secure Password Hashing**  
-  - Uses `werkzeug.security` for encryption
-
+  - Uses `Flask-Bcrypt` for adaptive password encryption and verification
+      
 - **Environment Variables**  
   - Managed via the `.env` file to keep sensitive data safe
 
@@ -88,6 +88,7 @@ login-registration-portal/
     ├── forgot_password.html   # User dashboard after login
     └── reset_password.html    # User dashboard after login     
 ├── app.py               # Main Flask application
+├── models.py            # Defines user and pending models
 ├── requirements.txt     # Python dependencies
 ├── .env                 # Environment variables
 └── README.md            # Project documentation
@@ -97,7 +98,7 @@ login-registration-portal/
 This project includes several built-in security measures to protect user data and application integrity:
 
 **Password Handling**
-- **Hashed Passwords**: User passwords are securely hashed using `werkzeug.security` before storing in the database.
+- **Hashed Passwords**: User passwords are securely hashed using `Flask-Bcrypt` before storing in the database.
 - **No Plaintext Storage**: Passwords are never stored or transmitted in plaintext.
 
 **Input Validation**
@@ -106,7 +107,7 @@ This project includes several built-in security measures to protect user data an
 
 **Session Management**
 - **Secure Sessions**: Flask sessions are used to manage user authentication securely.
-- **Session Expiry**: Sessions can be configured to expire after a set duration to reduce risk of hijacking.
+- **Session Expiry**: Sessions can be configured to expire after a set duration to reduce the risk of hijacking.
 
 **Environment Variables**
 - **Sensitive Data Isolation**: Secrets like database URIs and secret keys are stored in a `.env` file and loaded using `python-dotenv`.
@@ -127,4 +128,4 @@ This project is intended for **educational purposes only**.
 -  Commercial use, redistribution, or deployment in production environments is **not permitted** without explicit permission.
 -  This project is provided "as is" with no warranties or guarantees.
 
-> If you wish to use this project beyond educational scope, please contact the author for permission.
+> If you wish to use this project beyond an educational scope, please contact the author for permission.
