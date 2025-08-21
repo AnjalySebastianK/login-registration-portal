@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f0f4f8;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .form-container {
+      background-color: #ffffff;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 400px;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 1.5rem;
+      color: #333;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: bold;
+      color: #555;
+    }
+
+    input {
+      width: 100%;
+      padding: 0.6rem;
+      margin-bottom: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 1rem;
+    }
+
+    button {
+      width: 100%;
+      padding: 0.8rem;
+      background-color: #0078d4;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #005fa3;
+    }
+
+    .links {
+      text-align: center;
+      margin-top: 1rem;
+      font-size: 0.9rem;
+    }
+
+    .links a {
+      color: #0078d4;
+      text-decoration: none;
+      display: block;
+      margin: 0.3rem 0;
+    }
+
+    .links a:hover {
+      text-decoration: underline;
+    }
+
+    .captcha-container {
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+
+    .alert {
+      font-weight: bold;
+      margin-bottom: 1rem;
+      text-align: center;
+      padding: 0.5rem;
+      border-radius: 5px;
+    }
+
+    .alert-success {
+      color: green;
+    }
+
+    .alert-error {
+      color: red;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="form-container">
+    <h2>Login</h2>
+
+    {% if message %}
+      <div class="alert alert-success">{{ message }}</div>
+    {% endif %}
+
+    {% if error %}
+      <div class="alert alert-error">{{ error }}</div>
+    {% endif %}
+
+
+    <form method="POST">
+      <label for="email">Email:</label>
+      <input type="text" name="email" id="email" required />
+
+      <label for="password">Password:</label>
+      <input type="password" name="password" id="password" required />
+
+      <div class="captcha-container">
+        <div class="g-recaptcha" data-sitekey="{{ site_key }}"></div>
+      </div>
+
+      <button type="submit">Login</button>
+    </form>
+
+    <div class="links">
+      <a href="{{ url_for('forgot_password') }}">Forgot Password?</a>
+      <a href="{{ url_for('register') }}">No account? Create a new account</a>
+    </div>
+  </div>
+
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+</body>
+</html>
